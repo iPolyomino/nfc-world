@@ -1,14 +1,12 @@
 #!/usr/bin/env python3
 
-import binascii
 import nfc
 
 
 class CardReader(object):
     def on_connect(self, tag):
         print('touched')
-        self.idm = binascii.hexlify(tag.idm)
-        print(self.idm)
+        print(('  ' + '\n  '.join(tag.dump())))
         return True
 
     def read_id(self):
